@@ -57,14 +57,14 @@ def train_test_split(user_rating, random_state=100):
 
 def data_preprocess():
     #创建user-item评分矩阵
-    print("Loading data..."）
+    print("Loading data...")
     rating_data = pd.read_csv('..k/data/Moivelens/ml-latest-small/ratings.csv')
     user_id = rating_data['userId'].unique()
     movie_id = rating_data['movieId'].unique()
     rating_matrix = np.zeros([len(user_id),len(movie_id)])
     rating_matrix = pd.DataFrame(rating_matrix, index=user_id, columns=movie_id)
 
-    print "Converting data..."
+    print("Converting data...")
     count = 0
     user_num= len(user_id)
     for uid in user_id:
@@ -78,7 +78,7 @@ def data_preprocess():
         count += 1
         if count % 100 == 0:
             completed_percentage = round(float(count) / user_num * 100)
-            print "Completed %s" % completed_percentage + "%"
+            print("Completed %s" % completed_percentage + "%")
 
     rating_matrix.to_csv('../data/Moivelens/ml-latest-small/user-rating.csv')
 
